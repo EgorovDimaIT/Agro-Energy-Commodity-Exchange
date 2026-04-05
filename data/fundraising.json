@@ -1,0 +1,61 @@
+{
+  "projects": [
+    {
+      "id": "owht-cairo-q3-2026",
+      "name": "Odesa-Cairo Wheat Corridor Q3 2026",
+      "description": "Fundraising for a real wheat shipment from Odesa to Cairo. Governance through Milestone DAO.",
+      "tokenMint": "BZBvHcjsZJVKwLJSesCSe3CyVJubXWAsz7Yo6VQ2bSA1",
+      "escrowWallet": "FJwqsC4y6dT6yLy4XQZEaAjzDEWbXkiJxJi6BfGS5naf",
+      "targetSOL": 5,
+      "raisedSOL": 1.25,
+      "status": "funding",
+      "currentMilestone": 0,
+      "createdAt": "2026-04-04T16:12:47.264Z",
+      "milestones": [
+        {
+          "index": 0,
+          "title": "Contract Signing & Insurance",
+          "amountSOL": 0.5,
+          "percentage": 10,
+          "status": "oracle_confirmed"
+        },
+        {
+          "index": 1,
+          "title": "Warehouse Verification & Audit",
+          "amountSOL": 1,
+          "percentage": 20,
+          "status": "locked"
+        },
+        {
+          "index": 2,
+          "title": "Loading & Ship Departure",
+          "amountSOL": 1.5,
+          "percentage": 30,
+          "status": "locked"
+        },
+        {
+          "index": 3,
+          "title": "In-Transit Oracle Confirmation",
+          "amountSOL": 1,
+          "percentage": 20,
+          "status": "locked"
+        },
+        {
+          "index": 4,
+          "title": "Final Delivery & Settlement",
+          "amountSOL": 1,
+          "percentage": 20,
+          "status": "locked"
+        }
+      ],
+      "investors": [
+        {
+          "wallet": "bZ67oLzrvGhn9zxtxVhAV5Usg3bKMgbRV6dXdWKSBGg",
+          "amountSOL": 1.25,
+          "tokenBalance": 125,
+          "investedAt": "2026-04-04T16:12:47.264Z"
+        }
+      ]
+    }
+  ]
+}

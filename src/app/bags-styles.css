@@ -1,0 +1,1139 @@
+/* ═══════════════════════════════════════════════
+   BAGS INTEGRATION — ACCESS GATE
+   ═══════════════════════════════════════════════ */
+
+.access-gate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  padding: 2rem;
+}
+
+.access-gate-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 3rem;
+  text-align: center;
+  max-width: 480px;
+  width: 100%;
+}
+
+.access-gate-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.access-gate-card h2 {
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.access-gate-card p {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.access-gate-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.access-gate-denied {
+  border-color: rgba(255, 77, 77, 0.3);
+}
+
+.access-gate-balance {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+}
+
+.bags-link {
+  color: #00d4aa;
+  text-decoration: none;
+}
+
+.bags-link:hover {
+  text-decoration: underline;
+}
+
+.btn-bags,
+.btn-bags-sm,
+.btn-bags-lg {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #00d4aa, #00a388);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-bags:hover,
+.btn-bags-sm:hover,
+.btn-bags-lg:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 212, 170, 0.3);
+}
+
+.btn-bags-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+
+.btn-bags-lg {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+/* ── Access Badge ── */
+.access-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 212, 170, 0.1);
+  border: 1px solid rgba(0, 212, 170, 0.3);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #00d4aa;
+  margin-bottom: 1rem;
+}
+
+.access-badge-tier {
+  margin-left: auto;
+  font-weight: 600;
+}
+
+/* ── Spinner ── */
+.access-gate-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #00d4aa;
+  border-radius: 50%;
+  animation: spin 0.8s ease-in-out infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ═══════════════════════════════════════════════
+     BAGS FEE DASHBOARD
+     ═══════════════════════════════════════════════ */
+
+.fee-dashboard {
+  padding: 2rem 0;
+}
+
+.fee-dashboard-header h2 {
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.fee-dashboard-subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 2rem;
+}
+
+.fee-total-card {
+  background: rgba(0, 212, 170, 0.08);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 212, 170, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.fee-total-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #00d4aa;
+  margin: 0.5rem 0;
+}
+
+.fee-total-label {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+.fee-total-source {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.fee-total-source a {
+  color: #00d4aa;
+}
+
+.fee-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.fee-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.fee-card:hover {
+  border-color: rgba(0, 212, 170, 0.3);
+  transform: translateY(-2px);
+}
+
+.fee-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.fee-card-symbol {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.fee-card-royalty {
+  color: #00d4aa;
+  font-size: 0.8rem;
+  background: rgba(0, 212, 170, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+}
+
+.fee-card-stat {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.fee-stat-label {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+}
+
+.fee-stat-value {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.fee-card-footer {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.fee-card-link {
+  color: #00d4aa;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+/* ── Fee Distribution ── */
+.fee-distribution-info {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+.fee-distribution-info h3 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.fee-distribution-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.fee-dist-item {
+  text-align: center;
+}
+
+.fee-dist-percent {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #00d4aa;
+}
+
+.fee-dist-label {
+  color: #ffffff;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.fee-dist-desc {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+/* ═══════════════════════════════════════════════
+     AGROFUND — MILESTONE CROWDFUNDING
+     ═══════════════════════════════════════════════ */
+
+.agrofund {
+  padding: 2rem 0;
+}
+
+.agrofund-header h2 {
+  color: #ffffff;
+}
+
+.agrofund-header p {
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1.5rem;
+}
+
+.agrofund-stats-bar {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+}
+
+.agrofund-stat .stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #00d4aa;
+}
+
+.agrofund-stat .stat-label {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  display: block;
+}
+
+.agrofund-project-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.agrofund-project-card:hover {
+  border-color: rgba(0, 212, 170, 0.3);
+  transform: translateY(-2px);
+}
+
+.project-card-top {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.project-card-commodity {
+  font-size: 2.5rem;
+}
+
+.project-card-info h3 {
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+}
+
+.project-card-info p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+.project-route {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.85rem !important;
+}
+
+/* Progress Bar */
+.project-progress {
+  margin-bottom: 1rem;
+}
+
+.progress-bar {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00d4aa, #00a388);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Milestone Mini */
+.project-milestones-mini {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.milestone-mini {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.milestone-mini.status-released {
+  background: rgba(0, 212, 170, 0.15);
+}
+
+.milestone-mini.status-voting {
+  background: rgba(255, 193, 7, 0.15);
+}
+
+.milestone-mini.status-locked {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.milestone-mini.status-rejected {
+  background: rgba(255, 77, 77, 0.15);
+}
+
+.project-card-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-details {
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.btn-details:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Milestone Modal ── */
+.milestone-modal-overlay,
+.trader-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.milestone-modal,
+.trader-modal {
+  background: rgba(20, 20, 30, 0.95);
+  backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 720px;
+  width: 100%;
+  position: relative;
+  margin-top: 2rem;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1.5rem;
+}
+
+.milestone-detail-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.milestone-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.milestone-number {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.milestone-title {
+  color: #ffffff;
+  flex: 1;
+}
+
+.milestone-badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.milestone-badge.status-released {
+  background: rgba(0, 212, 170, 0.2);
+  color: #00d4aa;
+}
+
+.milestone-badge.status-voting {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+}
+
+.milestone-badge.status-locked {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.milestone-desc {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.milestone-amount {
+  color: #00d4aa;
+  font-weight: 600;
+}
+
+/* Voting UI */
+.milestone-voting {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.voting-timer {
+  color: #ffc107;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.vote-bar {
+  display: flex;
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.vote-bar-yes {
+  background: #00d4aa;
+}
+
+.vote-bar-no {
+  background: #ff4d4d;
+}
+
+.vote-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.vote-yes {
+  color: #00d4aa;
+}
+
+.vote-no {
+  color: #ff4d4d;
+}
+
+.oracle-proof {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.oracle-proof a {
+  color: #00d4aa;
+}
+
+.vote-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-vote-yes {
+  flex: 1;
+  padding: 0.75rem;
+  background: rgba(0, 212, 170, 0.15);
+  border: 1px solid rgba(0, 212, 170, 0.3);
+  color: #00d4aa;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-vote-yes:hover {
+  background: rgba(0, 212, 170, 0.25);
+}
+
+.btn-vote-no {
+  flex: 1;
+  padding: 0.75rem;
+  background: rgba(255, 77, 77, 0.1);
+  border: 1px solid rgba(255, 77, 77, 0.3);
+  color: #ff4d4d;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-vote-no:hover {
+  background: rgba(255, 77, 77, 0.2);
+}
+
+.milestone-released {
+  color: rgba(0, 212, 170, 0.7);
+  font-size: 0.85rem;
+  margin-top: 0.75rem;
+}
+
+.no-tokens-warning {
+  color: #ffc107;
+  font-size: 0.85rem;
+}
+
+.no-tokens-warning a {
+  color: #00d4aa;
+}
+
+/* ═══════════════════════════════════════════════
+     AGROCONNECT — SOCIAL TRADING
+     ═══════════════════════════════════════════════ */
+
+.agroconnect {
+  padding: 2rem 0;
+}
+
+.agroconnect-header h2 {
+  color: #ffffff;
+}
+
+.agroconnect-header p {
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1.5rem;
+}
+
+.agroconnect-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tab {
+  padding: 0.6rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab.active {
+  background: rgba(0, 212, 170, 0.15);
+  border-color: rgba(0, 212, 170, 0.3);
+  color: #00d4aa;
+}
+
+/* Leaderboard */
+.leaderboard-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.25rem;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  transition: all 0.3s ease;
+}
+
+.leaderboard-card:hover {
+  border-color: rgba(0, 212, 170, 0.3);
+}
+
+.leaderboard-rank {
+  font-size: 1.5rem;
+  min-width: 40px;
+  text-align: center;
+}
+
+.leaderboard-avatar {
+  font-size: 2rem;
+}
+
+.leaderboard-info h3 {
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.leaderboard-info p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+}
+
+.kyc-badge {
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+}
+
+.leaderboard-stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-left: auto;
+}
+
+.lb-stat {
+  text-align: center;
+}
+
+.lb-stat-value {
+  font-weight: 700;
+  color: #ffffff;
+  display: block;
+}
+
+.lb-stat-value.positive {
+  color: #00d4aa;
+}
+
+.lb-stat-label {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.leaderboard-holdings {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  padding-left: 4rem;
+}
+
+.holding-pill {
+  padding: 0.2rem 0.5rem;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.leaderboard-actions {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  padding-left: 4rem;
+  margin-top: 0.5rem;
+}
+
+.btn-copy-trade,
+.btn-follow {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  border: 1px solid;
+  transition: all 0.2s;
+}
+
+.btn-copy-trade {
+  background: rgba(0, 212, 170, 0.1);
+  border-color: rgba(0, 212, 170, 0.3);
+  color: #00d4aa;
+}
+
+.btn-follow {
+  background: rgba(255, 193, 7, 0.1);
+  border-color: rgba(255, 193, 7, 0.3);
+  color: #ffc107;
+}
+
+/* Activity Feed */
+.feed-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.feed-avatar {
+  font-size: 1.5rem;
+}
+
+.feed-content {
+  flex: 1;
+}
+
+.feed-trader {
+  font-weight: 600;
+  color: #ffffff;
+  margin-right: 0.5rem;
+}
+
+.feed-action {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.feed-detail {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+
+.feed-time {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.8rem;
+}
+
+/* Trader Modal */
+.trader-modal-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.trader-modal-avatar {
+  font-size: 3rem;
+}
+
+.trader-modal-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.tms {
+  text-align: center;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+}
+
+.tms-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.tms-value.positive {
+  color: #00d4aa;
+}
+
+.tms-label {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.portfolio-bars {
+  margin-bottom: 1.5rem;
+}
+
+.portfolio-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-bar-label {
+  width: 50px;
+  font-size: 0.85rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.portfolio-bar-track {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.portfolio-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00d4aa, #00a388);
+  border-radius: 4px;
+}
+
+.portfolio-bar-percent {
+  width: 35px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: right;
+}
+
+.trader-activity-item {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.activity-time {
+  margin-left: auto;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.trader-modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn-copy-trade-lg {
+  flex: 1;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, #00d4aa, #00a388);
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* ═══════════════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .fee-distribution-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .leaderboard-stats {
+    gap: 0.75rem;
+  }
+
+  .trader-modal-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .leaderboard-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .leaderboard-stats {
+    margin-left: 0;
+  }
+
+  .leaderboard-holdings,
+  .leaderboard-actions {
+    padding-left: 0;
+  }
+}
+
+/* ── New API UI Elements ── */
+
+.api-status-message {
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease;
+}
+
+.api-status-message.success {
+  background: rgba(0, 212, 170, 0.1);
+  border: 1px solid rgba(0, 212, 170, 0.3);
+  color: #00d4aa;
+}
+
+.api-status-message.error {
+  background: rgba(255, 77, 77, 0.1);
+  border: 1px solid rgba(255, 77, 77, 0.3);
+  color: #ff4d4d;
+}
+
+.quorum-hint {
+  display: block;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 0.25rem;
+}
+
+.quorum-hint.success {
+  color: #00d4aa;
+  font-weight: 600;
+}
+
+.milestone-admin-demo {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.btn-simulate-oracle {
+  width: 100%;
+  padding: 0.75rem;
+  background: rgba(147, 51, 234, 0.15);
+  border: 1px solid rgba(147, 51, 234, 0.3);
+  color: #a855f7;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-simulate-oracle:hover:not(:disabled) {
+  background: rgba(147, 51, 234, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-release-funds {
+  flex: 1;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, #00d4aa, #00a388);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 212, 170, 0.2);
+  transition: all 0.2s;
+}
+
+.btn-release-funds:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 212, 170, 0.4);
+}
+
+.btn-release-funds:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.feed-loading,
+.feed-empty {
+  text-align: center;
+  padding: 2rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+}
+
+.feed-explorer-link {
+  color: #00d4aa;
+  font-size: 0.75rem;
+  text-decoration: none;
+  border: 1px solid rgba(0, 212, 170, 0.3);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin-left: 1rem;
+}
+
+.feed-explorer-link:hover {
+  background: rgba(0, 212, 170, 0.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Bags.fm CTA Button Glow ── */
+@keyframes bagsBtnGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}

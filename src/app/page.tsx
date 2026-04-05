@@ -10,8 +10,20 @@ import {
     Globe2,
     CheckCircle2,
     Truck,
-    LineChart
+    LineChart,
+    Users,
+    Activity,
+    LineChart as ChartIcon
 } from 'lucide-react';
+
+import { useWallet } from '@solana/wallet-adapter-react';
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+
+import { BagsAccessGate } from '@/components/BagsAccessGate';
+import { AgroFund } from '@/components/AgroFund';
+import { AgroConnect } from '@/components/AgroConnect';
+import { BagsFeeDashboard } from '@/components/BagsFeeDashboard';
+import { SimpleFundraising } from '@/components/SimpleFundraising';
 
 // Virtual Companies
 const COMPANIES = [
@@ -33,24 +45,27 @@ const ASSETS_DATA = [
 
 export default function MetaMaskEscrowApp() {
     const [activeTab, setActiveTab] = useState('Assets');
-    const [wallet, setWallet] = useState<string | null>(null);
+    const [mounted, setMounted] = useState(false);
+    const { publicKey, connected, disconnect } = useWallet();
 
-    const connectMetaMask = async () => {
-        if (typeof window !== 'undefined' && (window as any).ethereum) {
-            try {
-                const accounts = await (window as any).ethereum.request({ method: 'eth_requestAccounts' });
-                if (accounts.length > 0) setWallet(accounts[0]);
-            } catch (err) {
-                console.error("User rejected request");
-            }
-        } else {
-            alert("Please install MetaMask!");
-        }
-    };
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const renderContent = () => {
         switch (activeTab) {
             case 'Dashboard': return <DashboardTab />;
+            case 'AgroFund': return (
+                <div className="glass-panel">
+                    <SimpleFundraising />
+                </div>
+            );
+            case 'AgroConnect': return (
+                <BagsAccessGate requiredToken="AGRO" minBalance={50} gatedFeature="AgroConnect Premium Social Trading">
+                    <AgroConnect />
+                </BagsAccessGate>
+            );
+            case 'Fee Sharing': return <BagsFeeDashboard />;
             case 'KYC': return <KycTab />;
             case 'Deals': return <DealsTab />;
             case 'Assets': return <AssetsTab />;
@@ -70,9 +85,12 @@ export default function MetaMaskEscrowApp() {
                 <nav className="nav-menu">
                     {[
                         { id: 'Dashboard', icon: LayoutDashboard },
+                        { id: 'AgroFund', icon: ChartIcon },
+                        { id: 'AgroConnect', icon: Users },
+                        { id: 'Fee Sharing', icon: Activity },
+                        { id: 'Assets', icon: Database },
                         { id: 'KYC', icon: ShieldCheck },
                         { id: 'Deals', icon: Handshake },
-                        { id: 'Assets', icon: Database }
                     ].map(item => (
                         <div
                             key={item.id}
@@ -86,19 +104,26 @@ export default function MetaMaskEscrowApp() {
                 </nav>
 
                 <div className="wallet-section">
-                    {!wallet ? (
-                        <button className="btn btn-primary" style={{ width: '100%' }} onClick={connectMetaMask}>
-                            <Wallet size={16} />
-                            Connect MetaMask
-                        </button>
+                    {!mounted ? (
+                        <div style={{ height: '40px', background: 'rgba(255,255,255,0.05)', borderRadius: '8px' }}></div>
+                    ) : !connected ? (
+                        <div className="phantom-button-container" style={{ width: '100%' }}>
+                            <WalletMultiButton style={{ width: '100%', background: 'var(--accent-color)', borderRadius: '8px', fontSize: '14px' }} />
+                        </div>
                     ) : (
                         <div style={{ textAlign: 'center' }}>
                             <div className="badge badge-verified" style={{ marginBottom: '10px' }}>
-                                <CheckCircle2 size={12} /> Connected EVM
+                                <CheckCircle2 size={12} /> Connected (Phantom)
                             </div>
                             <div style={{ fontSize: '11px', color: 'var(--text-secondary)', background: 'rgba(255,255,255,0.05)', padding: '8px', borderRadius: '8px', wordBreak: 'break-all' }}>
-                                {wallet}
+                                {publicKey?.toBase58()}
                             </div>
+                            <button
+                                onClick={() => disconnect()}
+                                style={{ marginTop: '10px', fontSize: '10px', color: 'var(--danger-color)', background: 'none', border: 'none', cursor: 'pointer', opacity: 0.7 }}
+                            >
+                                Disconnect Wallet
+                            </button>
                         </div>
                     )}
                 </div>
@@ -260,36 +285,39 @@ function Sparkline({ data, color }: { data: number[], color: string }) {
 
 function AssetsTab() {
     // Simulate live price feeds
-    const [prices, setPrices] = useState<Record<string, number[]>>(() => {
-        const init: Record<string, number[]> = {};
-        ASSETS_DATA.forEach(asset => {
-            // populate with 20 historical mock data points
-            init[asset.id] = Array.from({ length: 20 }, () => asset.basePrice * (1 + (Math.random() - 0.5) * 0.05));
-            init[asset.id].push(asset.basePrice);
-        });
-        return init;
-    });
+    const [prices, setPrices] = useState<Record<string, number[]>>({});
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
+        // Initialize with historical data only on client
+        const init: Record<string, number[]> = {};
+        ASSETS_DATA.forEach(asset => {
+            init[asset.id] = Array.from({ length: 21 }, () => asset.basePrice * (1 + (Math.random() - 0.5) * 0.05));
+        });
+        setPrices(init);
+
         const interval = setInterval(() => {
             setPrices(prev => {
+                if (Object.keys(prev).length === 0) return prev;
                 const next = { ...prev };
                 Object.keys(next).forEach(key => {
                     const currentHistory = next[key];
                     const lastPrice = currentHistory[currentHistory.length - 1];
-                    // simulate a random market tick (up or down by max 1.5%)
                     const change = lastPrice * ((Math.random() - 0.5) * 0.03);
                     const newPrice = lastPrice + change;
-
-                    // keep last 20 points
                     next[key] = [...currentHistory.slice(1), newPrice];
                 });
                 return next;
             });
-        }, 1500); // Ticks every 1.5 seconds
+        }, 1500);
 
         return () => clearInterval(interval);
     }, []);
+
+    if (!mounted || Object.keys(prices).length === 0) {
+        return <div className="glass-panel" style={{ textAlign: 'center', padding: '50px' }}>📊 Accessing Local Markets via Oracle...</div>;
+    }
 
     return (
         <div className="glass-panel">
