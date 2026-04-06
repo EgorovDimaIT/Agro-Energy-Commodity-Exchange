@@ -1,8 +1,6 @@
 # � Agro-Energy RWA Exchange
 ### Tokenized Commodity Trading & Crowdfunding Platform on Solana × Bags.fm
 
-> **The Bags Hackathon 2026** — Creator Finance Track  
-> Built on [Bags.fm](https://bags.fm) | [DoraHacks Submission](https://dorahacks.io/hackathon/the-bags-hackathon)
 
 ---
 
@@ -263,7 +261,6 @@ node scripts/launch_bags_fundraising.js          # Launch $AGRO on Bags.fm (Main
 
 ## 👥 Team
 
-Built with ❤️ for **The Bags Hackathon 2026** on DoraHacks
 
 ---
 
